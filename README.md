@@ -19,7 +19,7 @@ Creiamo una pagina web che conterrà un form HTML e implementiamo un sistema di 
 
 
 ## BONUS:
-- [] Milestone 4: (Redirect)
+- [x] Milestone 4: (Redirect)
     Implementare un redirect a una pagina di ringraziamento (thankyou.php) in caso di esito positivo.
     Utilizzare la session PHP per memorizzare l'indirizzo email registrato durante la procedura di validazione.
 

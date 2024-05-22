@@ -2,21 +2,9 @@
 
 include_once __DIR__ . "/partials/fuction.php";
 
-// if (isset($_GET["mail"])) {
-//     //var_dump($_GET["mail"]);
-
-//     $mail = $_GET["mail"];
-//     //var_dump($mail);
-
-//     // strpos controlla se quel valore è presente nella stringa
-//     if (strpos($mail, '@') !== false && strpos($mail, '.') !== false) {
-//         $correction = "indirizzo mail valido";
-//     } else {
-//        $error = "indirizzo mail non valido";
-//     }
-// }
-
-// var_dump($_GET)
+if (!isset($_SESSION)) {
+    session_start();
+}
 
 valid_mail ();
 ?>
