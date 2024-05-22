@@ -1,21 +1,24 @@
 <?php
 
+include_once __DIR__ . "/partials/fuction.php";
 
-if (isset($_GET["mail"])) {
-    //var_dump($_GET["mail"]);
+// if (isset($_GET["mail"])) {
+//     //var_dump($_GET["mail"]);
 
-    $mail = $_GET["mail"];
-    //var_dump($mail);
+//     $mail = $_GET["mail"];
+//     //var_dump($mail);
 
-    // strpos controlla se quel valore è presente nella stringa
-    if (strpos($mail, '@') !== false && strpos($mail, '.') !== false) {
-        $correction = "indirizzo mail valido";
-    } else {
-       $error = "indirizzo mail non valido";
-    }
-}
+//     // strpos controlla se quel valore è presente nella stringa
+//     if (strpos($mail, '@') !== false && strpos($mail, '.') !== false) {
+//         $correction = "indirizzo mail valido";
+//     } else {
+//        $error = "indirizzo mail non valido";
+//     }
+// }
 
 // var_dump($_GET)
+
+valid_mail ();
 ?>
 
 
@@ -36,22 +39,9 @@ if (isset($_GET["mail"])) {
 <body>
 
     <div class="container mt-5">
-        <div class="row">
+        <div class="row justify-content-center">
             <div class="col-7">
 
-            <!-- stampa messaggio mail valida -->
-                <?php if (isset($correction)) { ?>
-                    <div class="alert alert-primary">
-                        <?php echo $correction; ?>
-                    </div>
-
-                    <!-- stampa messaggio mail NON valido -->
-                <?php } elseif (isset($error)) { ?>
-                    <div class="alert alert-danger">
-                        <?php echo $error; ?>
-                    </div>
-                <?php } ?>
-              
                 <!-- form -->
                 <form action="index.php" method="GET">
                     <div class="mb-3">
@@ -60,6 +50,7 @@ if (isset($_GET["mail"])) {
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
+            
             </div>
 
         </div>
