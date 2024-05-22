@@ -6,7 +6,7 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
-valid_mail ();
+valid_mail();
 ?>
 
 
@@ -34,11 +34,18 @@ valid_mail ();
                 <form action="index.php" method="GET">
                     <div class="mb-3">
                         <label for="mail" class="form-label">Inserisci indirizzo email</label>
-                        <input type="text" class="form-control" id="mail" aria-describedby="email" name="mail">
+                        <input type="text" class="form-control" id="mail" aria-describedby="email" name="mail" value="<?php
+                         if (isset($_GET['mail'])) { 
+                            echo $_GET['mail'];
+                            
+                         } else {
+                             echo ''; 
+                        } ?>">
+                       
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
-            
+
             </div>
 
         </div>
@@ -49,3 +56,11 @@ valid_mail ();
 </body>
 
 </html>
+
+
+
+
+ <!-- Quando la pagina viene caricata, lo script PHP verifica se il parametro mail è presente nella query string usando isset($_GET['mail']).
+                        Se mail è presente, il valore viene visualizzato nel campo di input.
+                        Se mail non è presente, il campo di input rimane vuoto.
+                     value="<?php echo isset($_GET['mail']) ? $_GET['mail'] : ''; ?>" -->

@@ -1,14 +1,16 @@
 <?php
 
 
-function check_mail() {
+function check_mail()
+{
     if (!isset($_SESSION["ok"]) || $_SESSION["ok"] !== true) {
         header("Location: ./index.php");
         die();
-      }
     }
+}
 
-function valid_mail() {
+function valid_mail()
+{
     if (isset($_GET["mail"])) {
         //var_dump($_GET["mail"]);
         $mail = $_GET["mail"];
@@ -19,12 +21,10 @@ function valid_mail() {
             //stampa messaggio mail valida 
             $_SESSION["ok"] = true;
             header('Location: ./thankyou.php');
-        } else {
+        } else { 
             //stampa messaggio mail NON valido
             echo ' <div class="alert alert-danger" style="width: 50%;
-            margin: 0 auto;">
-                        Indirizzo mail NON valido
-                    </div>';
+                   margin: 0 auto;"> Indirizzo mail NON valido </div>';
         }
     }
 }
@@ -32,6 +32,3 @@ function valid_mail() {
 
 
 // var_dump($_GET)
-?>
-
-

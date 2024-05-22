@@ -23,6 +23,6 @@ Creiamo una pagina web che conterrà un form HTML e implementiamo un sistema di 
     Implementare un redirect a una pagina di ringraziamento (thankyou.php) in caso di esito positivo.
     Utilizzare la session PHP per memorizzare l'indirizzo email registrato durante la procedura di validazione.
 
-- [] Milestone 5: (Visualizzare valore errato)
+- [x] Milestone 5: (Visualizzare valore errato)
     Nel caso di esito negativo, garantire che il valore inserito precedentemente nel campo di input rimanga visibile.
     Sfruttare le variabili GET per mantenere e visualizzare l'indirizzo email errato nell'input.
