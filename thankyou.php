@@ -1,14 +1,14 @@
 <?php
-
-require_once __DIR__ . "/partials/fuction.php";
-
 if (!isset($_SESSION)) {
-    session_start();
+  session_start();
 }
 
-check_mail();
+if (!isset($_SESSION["email"])) {
+  header("Location: ./index.php");
+  die();
+}
 
-
+$email = $_SESSION["email"];
 ?>
 
 <!DOCTYPE html>
@@ -22,9 +22,17 @@ check_mail();
 
 <body>
     
-    <div class="container">
-        <h1>L'indirizzo mail è valido, lei è autorizzato</h1>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-6">
+        <div class="card">
+          <div class="card-body">
+            <h2>Grazie per esserti iscritto! Manderemo aggiornamenti alla tua email <?php echo $email; ?></h2>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 
 </body>
 

@@ -1,13 +1,33 @@
 <?php
 
-include_once __DIR__ . "/partials/fuction.php";
+require_once __DIR__ . "/partials/fuction.php";
+
+
 
 if (!isset($_SESSION)) {
-    session_start();
+  session_start();
 }
 
-valid_mail();
+// Controlliamo se il submit è stato fatto
+// Se l'utente non ha fatto ancora submit, allora non ci sarà chiave email nel $_POST
+//var_dump($_POST);
+$result;
+if (isset($_POST["email"])) {
+  // Dobbiamo elaborare l'input
+  // Se l'utente aveva cliccato sul submit ma con input vuoto, lachiave email ci sarà, ma avrà il valore della stringa vuota
+  $user_email = $_POST["email"];
+  $result = control_email($user_email);
+
+  // Nel caso di successo salvo email nella session e reindirizzo l'utente alla pagina thank you
+  if ($result["success"]) {
+    $_SESSION["email"] = $user_email;
+    header("Location: ./thankyou.php");
+    die();
+  }
+}
+
 ?>
+
 
 
 
@@ -29,21 +49,21 @@ valid_mail();
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-7">
+            <?php if (isset($result)) { ?>
+              <div class="alert <?php echo $result["success"] ? 'alert-success' : 'alert-danger'; ?>">
+                <?php echo $result["message"]; ?>
+              </div>
+            <?php } ?>
+
 
                 <!-- form -->
-                <form action="index.php" method="GET">
+                <form action="index.php" method="POST">
                     <div class="mb-3">
-                        <label for="mail" class="form-label">Inserisci indirizzo email</label>
-                        <input type="text" class="form-control" id="mail" aria-describedby="email" name="mail" value="<?php
-                         if (isset($_GET['mail'])) { 
-                            echo $_GET['mail'];
-                            
-                         } else {
-                             echo ''; 
-                        } ?>">
+                        <label for="email" class="form-label">Inserisci indirizzo email</label>
+                        <input type="text" class="form-control" id="email" aria-describedby="email" name="email" value="<?php echo isset($result) && !$result["success"] ? $user_email : ""; ?>">
                        
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">Invia</button>
                 </form>
 
             </div>
